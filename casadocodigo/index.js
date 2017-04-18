@@ -6,13 +6,19 @@ const nomes = ['Wagner', 'Anderson', 'Estevão', 'Thiago', 'Adalberto', 'Paulo']
 
 let app = http.createServer(function (req, res) {
   var msg = ''
+  if(req.url == '/') {
+
+    res.end('Home' + req.method)
+  }
 
   for(let i = 0; i < nomes.length; i++) {
     msg += ` ${nomes[i]} | `
   }
-  debugger;
-  res.writeHead(200,{'Content-type': 'text/html'})
-  res.end(`<meta charset="utf-8">${msg}`)
+
+  if (req.url == '/nomes') {
+    res.writeHead(200,{'Content-type': 'text/html'})
+    res.end(`<meta charset="utf-8">${msg}`)
+  }
 })
 
 app.listen(port, '127.0.0.1')
