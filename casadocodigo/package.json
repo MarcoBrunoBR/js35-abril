@@ -1,0 +1,26 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run build && node_modules/nodemon/bin/nodemon.js index.js",
+    "build": "echo build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MarcoBrunoBR/js35-abril.git"
+  },
+  "keywords": [
+    "aula"
+  ],
+  "author": "Marco Bruno",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/MarcoBrunoBR/js35-abril/issues"
+  },
+  "homepage": "https://github.com/MarcoBrunoBR/js35-abril#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
