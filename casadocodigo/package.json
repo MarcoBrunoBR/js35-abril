@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "npm run build && node_modules/nodemon/bin/nodemon.js index.js",
+    "start": "npm run build && nodemon app.js",
     "build": "echo build"
   },
   "repository": {
@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/MarcoBrunoBR/js35-abril#readme",
   "dependencies": {
+    "ejs": "^2.5.6",
     "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
