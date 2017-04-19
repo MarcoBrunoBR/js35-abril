@@ -22,16 +22,6 @@ module.exports = function (app) {
     connection.end()
   })
 
-
-
-
-
-
-
-
-
-
-
   app.use((req, res, next) => {
     res.render('404')
     console.log('404')
