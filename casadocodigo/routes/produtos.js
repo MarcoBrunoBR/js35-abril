@@ -1,4 +1,5 @@
-const mysql = require('mysql')
+const connectionFactory = require('../infra/connectionFactory')
+const ProdutoDao = require('../infra/ProdutoDao')
 
 module.exports = function (app) {
   app.use((req, res, next) => {
@@ -11,17 +12,14 @@ module.exports = function (app) {
   })
 
   app.get('/produtos', (req, res, next) => {
-    let connection = mysql.createConnection({
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASS || '',
-      host: process.env.DB_HOST || 'localhost',
-      database: process.env.DB_DATABASE || 'casadocodigo'
-    })
+    let connection = connectionFactory()
+    let produtoDao = new ProdutoDao(connection)
 
-    connection.query('SELECT * FROM livros', (err, result, fields) => {
+    produtoDao.lista((err, result, fields) => {
       res.render('produtos/lista', { livros: result })
     })
 
+    connection.end()
   })
 
 
