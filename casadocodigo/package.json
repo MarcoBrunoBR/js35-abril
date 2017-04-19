@@ -22,7 +22,8 @@
   "homepage": "https://github.com/MarcoBrunoBR/js35-abril#readme",
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mysql": "^2.13.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

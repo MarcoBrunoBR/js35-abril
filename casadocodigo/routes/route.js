@@ -1,3 +1,5 @@
+const mysql = require('mysql')
+
 module.exports = function (app) {
   app.use((req, res, next) => {
     console.log(req.url)
@@ -9,8 +11,28 @@ module.exports = function (app) {
   })
 
   app.get('/produtos', (req, res, next) => {
-    res.render('produtos/lista')
+    let connection = mysql.createConnection({
+      user: process.env.DB_USER || 'root',
+      password: process.env.DB_PASS || '',
+      host: process.env.DB_HOST || 'localhost',
+      database: process.env.DB_DATABASE || 'casadocodigo'
+    })
+
+    connection.query('SELECT * FROM livros', (err, result, fields) => {
+      res.render('produtos/lista', { livros: result })
+    })
+
   })
+
+
+
+
+
+
+
+
+
+
 
   app.use((req, res, next) => {
     res.render('404')
