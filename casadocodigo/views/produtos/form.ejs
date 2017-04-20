@@ -1,5 +1,13 @@
 <% include ../includes/header.ejs %>
 
+<% if (locals.validationErrors) { %>
+  <ul>
+    <% validationErrors.forEach((err) => { %>
+      <li><%= err.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
 <div>
     <div class ="container min-container">
         <h2 class="basic-title">Add</h2>

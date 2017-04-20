@@ -6,4 +6,8 @@ ProdutoDao.prototype.lista = function(callback) {
   this._connection.query('SELECT * FROM livros', callback)
 }
 
+ProdutoDao.prototype.salva = function(livro, callback) {
+  this._connection.query('INSERT INTO livros SET ?', livro, callback)
+}
+
 module.exports = ProdutoDao
