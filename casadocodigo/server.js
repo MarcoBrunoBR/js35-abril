@@ -1,7 +1,5 @@
-const app = require('./app.js')
+const app = require('./custom-express')
 const port = 3000
-
-require('./routes/produtos')(app)
 
 app.listen(port, () => {
   console.log(`Seu servidor está de pé em http://localhost:${port}`)

@@ -10,4 +10,6 @@ app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 app.use(expressValidator())
 
+require('./routes/produtos')(app)
+
 module.exports = app
