@@ -8,5 +8,26 @@
 </head>
 <body>
   <h1>Home</h1>
+
+  <button class"teste">Teste</button>
+
+  <output class="output">
+    Sem nada
+  </output>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let socket = io()
+    let $output =  document.querySelector('.output')
+
+    socket.on('novaPromocoes', (data) => {
+      console.log('Novas Promocoes')
+      console.log(data)
+
+      $output.innerHTML += `${data.msg} <br>` 
+    })
+
+
+  </script>
 </body>
 </html>

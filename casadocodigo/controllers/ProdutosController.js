@@ -1,5 +1,7 @@
 const connectionFactory = require('../infra/connectionFactory')
 const ProdutoDao = require('../infra/ProdutoDao')
+const Logger = require('../infra/Logger')
+const logger = new Logger()
 
 class ProdutosController {
   listaLivros(req, res, next) {
@@ -9,7 +11,7 @@ class ProdutosController {
     produtoDao.lista((err, result, fields) => {
       res.format({
         html: () => {
-          res.rende('produtos/lista', { livros: result })
+          res.render('produtos/lista', { livros: result })
         },
         json: () => {
           res.json(result)
@@ -51,6 +53,14 @@ class ProdutosController {
   show(req, res, next) {
     res.render('produtos/form')
   }
+
+  enviaPromocoes(req, res, next) {
+
+  }
+
+  showPromocoes(req, res, next) {
+    res.render('produtos/promocoes')
+  }
 }
 
-module.exports = new ProdutosController()
+module.exports = ProdutosController
