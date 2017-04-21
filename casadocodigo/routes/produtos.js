@@ -4,7 +4,7 @@ const Logger = require('../infra/Logger')
 const logger = new Logger()
 
 module.exports = function (app) {
-  const controller = new ProdutosController()
+  const controller = new ProdutosController(app)
 
   app.use((req, res, next) => {
     console.log(req.url)
@@ -19,14 +19,7 @@ module.exports = function (app) {
 
   app.get('/produtos/form', controller.show)
 
-  app.post('/promocoes', (req, res, next) => {
-    let data = req.body
-
-    logger.info('io', data.msg)
-
-    app.get('io').emit('novaPromocoes', data)
-    res.redirect('/promocoes')
-  })
+  app.post('/promocoes', (req, res) => controller.enviaPromocoes(req, res))
 
   app.get('/promocoes',  controller.showPromocoes)
 

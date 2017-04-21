@@ -4,6 +4,9 @@ const Logger = require('../infra/Logger')
 const logger = new Logger()
 
 class ProdutosController {
+  constructor(app) {
+    this.app = app
+  }
   listaLivros(req, res, next) {
     let connection = connectionFactory()
     let produtoDao = new ProdutoDao(connection)
@@ -54,8 +57,13 @@ class ProdutosController {
     res.render('produtos/form')
   }
 
-  enviaPromocoes(req, res, next) {
+  enviaPromocoes(req, res) {
+    let data = req.body
 
+    logger.info('io', this)
+
+    this.app.get('io').emit('novaPromocoes', data)
+    res.redirect('/promocoes')
   }
 
   showPromocoes(req, res, next) {
